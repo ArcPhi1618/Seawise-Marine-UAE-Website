@@ -335,18 +335,8 @@ export const Header: React.FC<HeaderProps> = ({
             Contact
           </button>
 
-          <div className="pt-4 border-t border-slate-800/80">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onRequestConsultation();
-              }}
-              className="w-full flex items-center justify-center gap-2 py-3 bg-white text-slate-900 font-bold text-xs uppercase tracking-wider rounded-sm shadow-md"
-            >
-              <span>Request a Consultation</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          
+          
         </div>
       )}
     </header>
