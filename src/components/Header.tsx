@@ -70,16 +70,25 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleLinkClick('home')} 
             className="flex items-center gap-3.5 group text-left cursor-pointer focus:outline-none"
           >
-            <div className="w-10 h-10 rounded-sm bg-gradient-to-br from-slate-800 to-[#0F1E46] border border-slate-700/60 flex items-center justify-center text-slate-200 group-hover:border-blue-400/50 group-hover:text-blue-300 transition-all shadow-sm">
-              <Anchor className="w-5 h-5 text-slate-200" strokeWidth={2.2} />
+            <div className="w-12 h-12 shrink-0 rounded-sm bg-gradient-to-br from-slate-800 to-[#0F1E46] border border-slate-700/60 flex items-center justify-center text-slate-200 group-hover:border-blue-400/50 group-hover:text-blue-300 transition-all shadow-sm overflow-hidden">
+              <img 
+                src="/img/logo.jpg" 
+                alt="SEAWISE MARINE Logo" 
+                className="w-full h-full object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              <div style={{ display: 'none' }} className="w-full h-full items-center justify-center">
+                <Anchor className="w-5 h-5 text-slate-200" strokeWidth={2.2} />
+              </div>
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-heading font-bold text-lg sm:text-xl tracking-wider text-white">
                   SEAWISE MARINE
-                </span>
-                <span className="hidden sm:inline-block px-1.5 py-0.5 text-[9px] font-tech font-semibold tracking-widest uppercase bg-slate-800/80 text-slate-300 border border-slate-700 rounded-xs">
-                  UAE
                 </span>
               </div>
               <p className="text-[10px] tracking-wider text-slate-400 uppercase font-medium">
@@ -187,42 +196,7 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </div>
 
-            {/* Direct Service Links for Fast Accessibility */}
-            <button
-              id="nav-ship-management"
-              onClick={() => handleLinkClick('ship-management')}
-              className={`px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm cursor-pointer ${
-                currentPage === 'ship-management'
-                  ? 'text-white bg-slate-800/60 border border-slate-700/60'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/30'
-              }`}
-            >
-              Ship Management
-            </button>
-
-            <button
-              id="nav-maritime-trading"
-              onClick={() => handleLinkClick('maritime-trading')}
-              className={`px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm cursor-pointer ${
-                currentPage === 'maritime-trading'
-                  ? 'text-white bg-slate-800/60 border border-slate-700/60'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/30'
-              }`}
-            >
-              Maritime Trading
-            </button>
-
-            <button
-              id="nav-marine-services"
-              onClick={() => handleLinkClick('marine-services')}
-              className={`px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm cursor-pointer ${
-                currentPage === 'marine-services'
-                  ? 'text-white bg-slate-800/60 border border-slate-700/60'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/30'
-              }`}
-            >
-              Marine Services
-            </button>
+            {/* Direct links removed in favor of Services dropdown */}
 
             <button
               id="nav-why-seawise"
@@ -274,6 +248,17 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
