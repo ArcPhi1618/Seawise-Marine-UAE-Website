@@ -1,0 +1,6 @@
+{
+  "name": "SEAWISE MARINE",
+  "description": "Professional ship management, maritime trading, and marine services built on practical sea-going experience, technical expertise, and operational discipline.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
