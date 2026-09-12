@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageId } from '../types';
-import { CONTACT_INFO_PLACEHOLDERS } from '../data/maritimeData';
+import { BRAND_INFO, CONTACT_INFO_PLACEHOLDERS } from '../data/maritimeData';
 import { Anchor, Mail, Phone, MapPin, ArrowUpRight, Compass, Shield } from 'lucide-react';
 
 interface FooterProps {
@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onRequestConsultatio
           <div className="flex items-center gap-3">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span className="tracking-wider uppercase">
-              UAE Maritime Operations Desk: Continuous Standby
+              {BRAND_INFO.jurisdiction} Maritime Operations Desk: Continuous Standby
             </span>
           </div>
           <div className="flex items-center gap-6">
@@ -44,21 +44,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onRequestConsultatio
               </div>
               <div>
                 <span className="font-heading font-bold text-xl tracking-wider text-white">
-                  SEAWISE MARINE
+                  {BRAND_INFO.name}
                 </span>
                 <p className="text-[11px] font-medium tracking-wider text-slate-400 uppercase">
-                  Ship Management • Maritime Trading • Marine Services
+                  {BRAND_INFO.subtitle}
                 </p>
               </div>
             </div>
 
             <p className="text-base font-heading font-semibold text-slate-200 italic border-l-2 border-slate-600 pl-3.5">
-              &ldquo;Experienced at Sea. Professional Ashore.&rdquo;
+              &ldquo;{BRAND_INFO.tagline}&rdquo;
             </p>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              A professional maritime company specializing in Ship Management, Maritime Trading, and Marine Services. 
-              Led and supported by experienced Marine Engineers, Captains, and maritime professionals.
+              {BRAND_INFO.businessDescription}
             </p>
 
             <div className="pt-2">

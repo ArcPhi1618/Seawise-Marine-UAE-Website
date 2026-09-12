@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
+import { BRAND_INFO } from '../data/maritimeData';
 import { 
   Anchor, 
   Menu, 
@@ -88,11 +89,11 @@ export const Header: React.FC<HeaderProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-heading font-bold text-lg sm:text-xl tracking-wider text-white">
-                  SEAWISE MARINE
+                  {BRAND_INFO.name}
                 </span>
               </div>
               <p className="text-[10px] tracking-wider text-slate-400 uppercase font-medium">
-                Ship Management • Trading • Services
+                {BRAND_INFO.subtitle}
               </p>
             </div>
           </button>

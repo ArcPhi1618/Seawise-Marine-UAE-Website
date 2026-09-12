@@ -1,5 +1,61 @@
 import { ApproachStep, QualitativePillar, ValueItem } from '../types';
 
+/**
+ * BRAND INFORMATION
+ */
+export const BRAND_INFO = {
+  name: 'SEAWISE MARINE',
+  tagline: 'Professional & Solutions-Focused Options.',
+  subtitle: 'Professional People • Maritime Expertise • Reliable Solutions',
+  jurisdiction: 'UAE',
+  businessDescription: 
+    'Seawise Marine is a professional maritime company specializing in Ship Management, Maritime Trading, and Marine Services. Led and supported by experienced Marine Engineers, Captains, and maritime professionals, we provide practical, reliable, and cost-effective solutions to ship owners, operators, and maritime businesses.',
+  commitment: 
+    'Our commitment is simple: to protect our clients’ assets, support safe and efficient vessel operations, and build long-term partnerships based on professionalism, integrity, and trust.',
+};
+
+/**
+ * CORE DIVISIONS SUMMARY
+ */
+export const CORE_SERVICES = [
+  {
+    id: 'ship-management',
+    title: 'Ship Management',
+    shortDesc: 'Comprehensive technical, marine, crew, and safety management designed to protect asset value and maximize operational uptime.',
+    tagline: 'Technical Integrity & Operational Safety',
+    scope: [
+      'Technical Ship Management & Monitoring',
+      'Safety, Quality & Environmental Compliance (ISM/ISPS)',
+      'Planned Maintenance & Running Hours Control',
+      'Dry-Docking & Major Repair Supervision',
+    ],
+  },
+  {
+    id: 'maritime-trading',
+    title: 'Maritime Trading',
+    shortDesc: 'Responsive sourcing and rapid delivery of OEM machinery spares, marine equipment, deck supplies, and technical stores.',
+    tagline: 'Reliable Sourcing & Technical Procurement',
+    scope: [
+      'Main Propulsion & Auxiliary Diesel Spares',
+      'Pumps, Compressors, Valves & Deck Machinery',
+      'Safety Equipment & Navigation Auxiliaries',
+      'Class-Certified Components & Ship Stores',
+    ],
+  },
+  {
+    id: 'marine-services',
+    title: 'Marine Services',
+    shortDesc: 'Hands-on technical advisory, vessel condition inspections, pre-purchase audits, and superintendent attendance.',
+    tagline: 'Practical Engineering & Superintendent Support',
+    scope: [
+      'Independent Vessel Condition Assessments',
+      'Pre-Purchase & Pre-Charter Audits',
+      'Emergency Machinery Troubleshooting',
+      'Port Call Supervision & Technical Representation',
+    ],
+  },
+];
+
 export const MARITIME_IMAGES = {
   // Commercial container vessel / bulk carrier at sea
   heroShip: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=2000&q=85',

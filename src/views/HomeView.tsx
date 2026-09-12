@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageId } from '../types';
 import { 
+  BRAND_INFO,
   MARITIME_IMAGES, 
   CORE_VALUES, 
   QUALITATIVE_PILLARS, 
@@ -73,39 +74,18 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsult
 
         {/* Technical Linework & Coordinates Accents */}
         <div className="absolute inset-0 z-10 pointer-events-none border-x border-slate-800/40 max-w-7xl mx-auto">
-          {/* Subtle Grid crosshairs */}
-          <div className="absolute top-28 left-4 flex items-center gap-2 text-[10px] font-tech text-slate-300">
-            <Crosshair className="w-3.5 h-3.5 text-slate-300" />
-            <span>LOC: {CONTACT_INFO_PLACEHOLDERS.coordinates}</span>
-          </div>
-
-          <div className="absolute top-28 right-4 hidden md:flex items-center gap-2 text-[10px] font-tech text-slate-300">
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-            <span>VESSEL OPS & TECHNICAL SUPERINTENDENCE</span>
-          </div>
-
           <div className="absolute bottom-10 left-4 hidden lg:block text-[10px] font-tech text-slate-300">
-            SECTOR: ARABIAN GULF & INTERNATIONAL TRADING LANES
+             ---
           </div>
         </div>
 
         {/* Hero Content Box */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="max-w-3xl">
-            {/* Category Tag */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-900/90 border border-slate-700/80 rounded-sm mb-6 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-blue-400"></span>
-              <span className="text-[11px] font-tech font-semibold tracking-widest uppercase text-slate-300">
-                UAE Maritime Enterprise • Ship Management & Trading
-              </span>
-            </div>
-
+        
             {/* Primary Headline */}
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.12] mb-6">
-              Experienced at Sea.{' '}
-              <span className="block text-slate-200">
-                Professional Ashore.
-              </span>
+              Professional & Solutions-Focused Options
             </h1>
 
             {/* Supporting Text */}
