@@ -16,23 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onRequestConsultatio
 
   return (
     <footer id="main-footer" className="bg-[#040814] text-slate-300 border-t border-slate-800/80">
-      {/* Top Banner / Corporate Credentials strip */}
-      <div className="border-b border-slate-800/60 bg-[#060B18]/60 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-tech text-slate-400">
-          <div className="flex items-center gap-3">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span className="tracking-wider uppercase">
-              {BRAND_INFO.jurisdiction} Maritime Operations Desk: Continuous Standby
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <span>Coordinates: {CONTACT_INFO_PLACEHOLDERS.coordinates}</span>
-            <span className="hidden sm:inline-block text-slate-600">|</span>
-            <span className="hidden sm:inline-block">Arabian Gulf Maritime Sector</span>
-          </div>
-        </div>
-      </div>
-
+      
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
