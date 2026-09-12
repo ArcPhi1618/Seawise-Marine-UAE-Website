@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { motion } from 'motion/react';
 import { PageId } from '../types';
-import { MARITIME_IMAGES, CORE_VALUES } from '../data/maritimeData';
+import { MARITIME_IMAGES, CORE_VALUES, QUALITATIVE_PILLARS } from '../data/maritimeData';
+
+const sectionAnimation = {
+  initial: { opacity: 0, x: 35 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true, amount: 0.08 },
+  transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+  style: { willChange: 'transform, opacity' }
+};
 import { 
   Anchor, 
   ArrowRight, 
@@ -8,11 +17,13 @@ import {
   Compass, 
   Award, 
   CheckCircle, 
+  CheckCircle2,
   Users, 
   Ship, 
   ArrowDownRight,
   TrendingUp,
-  Cpu
+  Cpu,
+  Scale
 } from 'lucide-react';
 
 interface AboutViewProps {
@@ -21,6 +32,50 @@ interface AboutViewProps {
 }
 
 export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onRequestConsultation }) => {
+  useEffect(() => {
+    if (window.location.hash === '#why-seawise') {
+      const el = document.getElementById('why-seawise');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+
+  const edgeAttributes = [
+    {
+      title: 'Technical Knowledge',
+      desc: 'Formulated by licensed Marine Engineers with in-depth understanding of main propulsion, auxiliary machinery, automation, and electrical distribution.',
+    },
+    {
+      title: 'Sea-Going Experience',
+      desc: 'Direct experience on commercial vessels under heavy weather, tight bunkering schedules, and international sea passages.',
+    },
+    {
+      title: 'Commercial Understanding',
+      desc: 'Appreciation of charter parties, off-hire penalties, demurrage risks, and the imperative for on-schedule voyage completion.',
+    },
+    {
+      title: 'Operational Discipline',
+      desc: 'Systematic maintenance regimes, statutory class compliance, and continuous safety audits minimizing operational surprises.',
+    },
+    {
+      title: 'Responsive Support',
+      desc: 'Direct access to senior decision-makers ready to authorize interventions without bureaucratic delays.',
+    },
+    {
+      title: 'Practical Problem Solving',
+      desc: 'Hands-on troubleshooting focused on engineering root-causes rather than superficial component replacements.',
+    },
+    {
+      title: 'Cost-Conscious Decision Making',
+      desc: 'Prudent technical spending designed to protect long-term vessel residual value while controlling unnecessary OPEX.',
+    },
+    {
+      title: 'Safety-Focused Management',
+      desc: 'Uncompromising adherence to international ISM, ISPS, and MLC frameworks to ensure zero harm to people, vessel, and environment.',
+    },
+  ];
+
   const narrativeSteps = [
     {
       step: '01',
@@ -55,10 +110,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onRequestConsu
   ];
 
   return (
-    <div className="bg-[#060B18] text-slate-100 min-h-screen pt-24 pb-20">
+    <div className="bg-[#060B18] text-slate-100 min-h-screen pt-24 pb-20 overflow-x-hidden">
       
       {/* 1. HERO */}
-      <section className="relative py-16 lg:py-24 border-b border-slate-800 overflow-hidden">
+      <motion.section 
+        {...sectionAnimation}
+        className="relative py-16 lg:py-24 border-b border-slate-800 overflow-hidden"
+      >
         <div className="absolute inset-0 z-0 opacity-25">
           <img 
             src={MARITIME_IMAGES.cargoVessel} 
@@ -85,10 +143,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onRequestConsu
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 2. CORPORATE INTRODUCTION */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.section 
+        {...sectionAnimation}
+        className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6 text-slate-300 leading-relaxed text-base">
             <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight">
@@ -134,10 +195,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onRequestConsu
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. OUR VISION & OUR MISSION */}
-      <section className="py-20 bg-[#081024] border-y border-slate-800">
+      <motion.section 
+        {...sectionAnimation}
+        className="py-20 bg-[#081024] border-y border-slate-800 overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
@@ -178,10 +242,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onRequestConsu
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. PROFESSIONAL TIMELINE / VISUAL NARRATIVE */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.section 
+        {...sectionAnimation}
+        className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden"
+      >
         <div className="max-w-3xl mb-16">
           <div className="flex items-center gap-2 mb-3">
             <span className="w-6 h-px bg-slate-500"></span>
@@ -232,10 +299,176 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onRequestConsu
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      {/* 5. CTA STRIP */}
-      <section className="py-16 bg-[#040814] border-t border-slate-800">
+      {/* 5. WHY CHOOSE SEAWISE MARINE */}
+      <motion.section 
+        {...sectionAnimation}
+        id="why-seawise" 
+        className="py-24 bg-[#050B1A] border-t border-slate-800 overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="max-w-3xl mb-16">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-6 h-px bg-slate-500"></span>
+              <span className="text-xs font-tech font-bold uppercase tracking-widest text-slate-300">
+                Institutional Distinction
+              </span>
+            </div>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+              Why Choose Seawise Marine
+            </h2>
+            <p className="text-xl text-slate-200 font-heading font-medium mb-3">
+              Experience That Understands the Vessel.
+            </p>
+            <p className="text-base text-slate-300 leading-relaxed">
+              We are not simply a service vendor. We are a dependable maritime partner combining practical sea-going experience, technical knowledge, and commercial discipline.
+            </p>
+          </div>
+
+          {/* From the Engine Room to the Boardroom */}
+          <div className="bg-[#091228] border border-slate-800 rounded-sm p-8 lg:p-12 mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="text-xs font-tech font-bold uppercase tracking-widest text-slate-300">
+                Operational Perspective
+              </span>
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2">
+                From the Engine Room to the Boardroom
+              </h3>
+              <p className="text-sm text-slate-400 mt-3">
+                Understanding both the physical realities of vessel machinery and the financial imperatives of ship ownership.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* The Engine Room Column */}
+              <div className="bg-[#060B18] border border-slate-800 p-7 rounded-sm space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                  <span className="text-xs font-tech font-bold text-slate-400 uppercase">THE ENGINE ROOM</span>
+                  <Cpu className="w-4 h-4 text-slate-400" />
+                </div>
+                <h4 className="font-heading text-xl font-bold text-white">Technical Realities of Operation</h4>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Vessels operate in severe, unforgiving marine environments. Main propulsion engines, auxiliary generators, ballast systems, and cargo gear experience continuous thermal and mechanical stress.
+                </p>
+                <ul className="space-y-2 text-xs text-slate-300">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span>Practical understanding of running hours & preventative maintenance</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span>Direct diagnostic capability without third-party delay</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span>Respect for onboard crew welfare, safety, and operational limits</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* The Boardroom Column */}
+              <div className="bg-[#060B18] border border-slate-800 p-7 rounded-sm space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                  <span className="text-xs font-tech font-bold text-slate-400 uppercase">THE BOARDROOM</span>
+                  <Scale className="w-4 h-4 text-slate-400" />
+                </div>
+                <h4 className="font-heading text-xl font-bold text-white">Commercial Pressures of Ownership</h4>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Ship owners and operators face fluctuating freight markets, bunker price volatility, stringent environmental regulations, and zero tolerance for vessel off-hire or detention.
+                </p>
+                <ul className="space-y-2 text-xs text-slate-300">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span>Prudent CAPEX and OPEX planning without compromising asset safety</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span>Protection of charter party terms and commercial reputation</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span>Long-term capital asset preservation and high survey compliance</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Integrated Strengths Under One Management */}
+          <div className="mb-16">
+            <div className="max-w-3xl mb-10">
+              <span className="text-xs font-tech font-bold uppercase tracking-widest text-slate-300">
+                Pillars of Reliability
+              </span>
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2">
+                Integrated Strengths Under One Management
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {edgeAttributes.map((attr, idx) => (
+                <div 
+                  key={attr.title}
+                  className="bg-[#0A1227] border border-slate-800 p-6 rounded-sm hover:border-slate-600 transition-colors flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="font-tech text-xs text-slate-400 font-bold block mb-2">
+                      ATTRIBUTE 0{idx + 1}
+                    </span>
+                    <h4 className="font-heading text-base font-bold text-white mb-2">
+                      {attr.title}
+                    </h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      {attr.desc}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-slate-800/80">
+                    <span className="w-2 h-2 rounded-full bg-slate-500 inline-block" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Value Proposition */}
+          <div>
+            <div className="max-w-3xl mb-8">
+              <span className="text-xs font-tech font-bold uppercase tracking-widest text-slate-300">
+                Client Assurance
+              </span>
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2">
+                Our Value Proposition
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {QUALITATIVE_PILLARS.map((item) => (
+                <div key={item.title} className="bg-[#0B1530] border border-slate-800 p-6 rounded-sm">
+                  <span className="text-[11px] font-tech text-slate-400 uppercase font-bold block mb-1">
+                    {item.highlight}
+                  </span>
+                  <h4 className="font-heading text-lg font-bold text-white mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </motion.section>
+
+      {/* 6. CTA STRIP */}
+      <motion.section 
+        {...sectionAnimation}
+        className="py-16 bg-[#040814] border-t border-slate-800 overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="font-heading text-xl sm:text-2xl font-bold text-white">
@@ -252,7 +485,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate, onRequestConsu
             Request a Consultation
           </button>
         </div>
-      </section>
+      </motion.section>
 
     </div>
   );

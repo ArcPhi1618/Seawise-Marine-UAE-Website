@@ -1,10 +1,12 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { PageId } from '../types';
 import { 
   BRAND_INFO,
   MARITIME_IMAGES, 
   CORE_VALUES, 
   QUALITATIVE_PILLARS, 
+  EDGE_ATTRIBUTES,
   CONTACT_INFO_PLACEHOLDERS 
 } from '../data/maritimeData';
 import { 
@@ -31,6 +33,14 @@ interface HomeViewProps {
   onRequestConsultation: (service?: string) => void;
 }
 
+const sectionAnimation = {
+  initial: { opacity: 0, x: 35 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true, amount: 0.08 },
+  transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+  style: { willChange: 'transform, opacity' }
+};
+
 const renderValueIcon = (iconName: string) => {
   switch (iconName) {
     case 'ShieldCheck':
@@ -54,10 +64,13 @@ const renderValueIcon = (iconName: string) => {
 
 export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsultation }) => {
   return (
-    <div className="bg-[#060B18] text-slate-100 selection:bg-slate-700 selection:text-white">
+    <div className="bg-[#060B18] text-slate-100 selection:bg-slate-700 selection:text-white overflow-x-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden maritime-grid">
+      <motion.section 
+        {...sectionAnimation}
+        className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden maritime-grid"
+      >
         {/* Cinematic Maritime Background Image with Multi-layer Navy Gradients */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -129,10 +142,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsult
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 2. INTRODUCTION SECTION */}
-      <section className="py-20 lg:py-28 bg-[#091124] border-y border-slate-800 relative">
+      <motion.section 
+        {...sectionAnimation}
+        className="py-20 lg:py-28 bg-[#091124] border-y border-slate-800 relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -174,10 +190,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsult
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. THREE CORE SERVICES */}
-      <section id="core-services" className="py-24 bg-[#060B18] relative">
+      <motion.section 
+        {...sectionAnimation}
+        id="core-services" 
+        className="py-24 bg-[#060B18] relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="max-w-3xl mb-16">
@@ -421,10 +441,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsult
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. PROFESSIONAL PROMISE SECTION */}
-      <section className="py-24 bg-[#050A17] border-y border-slate-800 relative overflow-hidden">
+      <motion.section 
+        {...sectionAnimation}
+        className="py-24 bg-[#050A17] border-y border-slate-800 relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
@@ -492,10 +515,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsult
 
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 5. CORE VALUES (Grid of 7 Values) */}
-      <section className="py-24 bg-[#070D1E] relative">
+      <motion.section 
+        {...sectionAnimation}
+        className="py-24 bg-[#070D1E] relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="max-w-3xl mb-16">
@@ -535,10 +561,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsult
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 6. WHY SEAWISE MARINE */}
-      <section className="py-24 bg-[#060B18] border-t border-slate-800 relative">
+      <motion.section 
+        {...sectionAnimation}
+        className="py-24 bg-[#060B18] border-t border-slate-800 relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -644,10 +673,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsult
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* 7. VALUE PROPOSITION (Qualitative Statements, No Fake Stats) */}
-      <section className="py-24 bg-[#081024] border-t border-slate-800 relative">
+      <motion.section 
+        {...sectionAnimation}
+        className="py-24 bg-[#081024] border-t border-slate-800 relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-16">
@@ -708,10 +740,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsult
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* 8. PRE-FOOTER CTA STRIP */}
-      <section className="py-16 bg-[#040814] border-t border-slate-800">
+      <motion.section 
+        {...sectionAnimation}
+        className="py-16 bg-[#040814] border-t border-slate-800 overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#0A142D] border border-slate-700/80 rounded-sm p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl space-y-3 text-left">
@@ -742,7 +777,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate, onRequestConsult
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
     </div>
   );

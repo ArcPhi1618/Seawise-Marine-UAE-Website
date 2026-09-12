@@ -45,7 +45,6 @@ export const Header: React.FC<HeaderProps> = ({
     onNavigate(page);
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const isServicesActive = [
@@ -59,8 +58,8 @@ export const Header: React.FC<HeaderProps> = ({
       id="main-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#060B18]/95 backdrop-blur-md py-3.5 border-b border-slate-800/80 shadow-xl shadow-black/40' 
-          : 'bg-gradient-to-b from-[#060B18]/95 via-[#060B18]/80 to-transparent py-5 border-b border-white/5'
+          ? 'bg-[#060B18]/95 backdrop-blur-md py-2.5 sm:py-3 border-b border-slate-800/80 shadow-xl shadow-black/40' 
+          : 'bg-gradient-to-b from-[#060B18]/95 via-[#060B18]/85 to-transparent py-3.5 sm:py-4 border-b border-white/5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,21 +68,25 @@ export const Header: React.FC<HeaderProps> = ({
           <button 
             id="brand-logo-btn"
             onClick={() => handleLinkClick('home')} 
-            className="flex items-center gap-3.5 group text-left cursor-pointer focus:outline-none"
+            className="flex items-center gap-3 sm:gap-4 group text-left cursor-pointer focus:outline-none"
           >
-            <div className="w-12 h-12 shrink-0 rounded-sm bg-gradient-to-br from-slate-800 to-[#0F1E46] border border-slate-700/60 flex items-center justify-center text-slate-200 group-hover:border-blue-400/50 group-hover:text-blue-300 transition-all shadow-sm overflow-hidden">
+            <div className="relative shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 group-hover:scale-105 transition-transform duration-200">
               <img 
-                src="/img/logo.jpg" 
+                src="/img/logo.png" 
                 alt="SEAWISE MARINE Logo" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
                 onError={(e) => {
+                  if (!e.currentTarget.src.endsWith('logo.jpg')) {
+                    e.currentTarget.src = '/img/logo.jpg';
+                    return;
+                  }
                   e.currentTarget.style.display = 'none';
                   const fallback = e.currentTarget.nextElementSibling as HTMLElement;
                   if (fallback) fallback.style.display = 'flex';
                 }}
               />
-              <div style={{ display: 'none' }} className="w-full h-full items-center justify-center">
-                <Anchor className="w-5 h-5 text-slate-200" strokeWidth={2.2} />
+              <div style={{ display: 'none' }} className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 items-center justify-center">
+                <Anchor className="w-6 h-6 text-slate-200" strokeWidth={2.2} />
               </div>
             </div>
             <div>
@@ -92,7 +95,7 @@ export const Header: React.FC<HeaderProps> = ({
                   {BRAND_INFO.name}
                 </span>
               </div>
-              <p className="text-[10px] tracking-wider text-slate-400 uppercase font-medium">
+              <p className="text-[10px] sm:text-[11px] tracking-wider text-slate-400 uppercase font-medium">
                 {BRAND_INFO.subtitle}
               </p>
             </div>
@@ -200,18 +203,6 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Direct links removed in favor of Services dropdown */}
 
             <button
-              id="nav-why-seawise"
-              onClick={() => handleLinkClick('why-seawise')}
-              className={`px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm cursor-pointer ${
-                currentPage === 'why-seawise'
-                  ? 'text-white bg-slate-800/60 border border-slate-700/60'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/30'
-              }`}
-            >
-              Why Seawise
-            </button>
-
-            <button
               id="nav-contact"
               onClick={() => handleLinkClick('contact')}
               className={`px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm cursor-pointer ${
@@ -317,15 +308,6 @@ export const Header: React.FC<HeaderProps> = ({
               Marine Services
             </button>
           </div>
-
-          <button
-            onClick={() => handleLinkClick('why-seawise')}
-            className={`w-full text-left px-3 py-2 text-sm font-semibold tracking-wide rounded-sm ${
-              currentPage === 'why-seawise' ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800/40'
-            }`}
-          >
-            Why Seawise Marine
-          </button>
 
           <button
             onClick={() => handleLinkClick('contact')}

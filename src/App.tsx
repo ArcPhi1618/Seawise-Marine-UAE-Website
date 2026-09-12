@@ -15,13 +15,13 @@ import { AboutView } from './views/AboutView';
 import { ShipManagementView } from './views/ShipManagementView';
 import { MaritimeTradingView } from './views/MaritimeTradingView';
 import { MarineServicesView } from './views/MarineServicesView';
-import { WhySeawiseView } from './views/WhySeawiseView';
 import { ContactView } from './views/ContactView';
 
 import { ArrowUp, Anchor, Compass } from 'lucide-react';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
+  const [navResetKey, setNavResetKey] = useState(0);
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
   const [modalDefaultService, setModalDefaultService] = useState('Ship Management');
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -29,18 +29,29 @@ export default function App() {
   // Sync with browser hash on load and hashchange
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '') as PageId;
+      const rawHash = window.location.hash.replace('#', '');
+      if (rawHash === 'why-seawise') {
+        setCurrentPage('about');
+        setNavResetKey(k => k + 1);
+        setTimeout(() => {
+          const el = document.getElementById('why-seawise');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+        return;
+      }
+
+      const hash = rawHash as PageId;
       const validPages: PageId[] = [
         'home', 
         'about', 
         'ship-management', 
         'maritime-trading', 
         'marine-services', 
-        'why-seawise', 
         'contact'
       ];
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
+        setNavResetKey(k => k + 1);
       }
     };
 
@@ -63,9 +74,31 @@ export default function App() {
   }, []);
 
   const navigateTo = (page: PageId) => {
+    // 1. Instantly reset scroll to top so scrolling past intermediate sections does not trigger animations
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    requestAnimationFrame(() => {
+      document.documentElement.style.scrollBehavior = '';
+    });
+
+    // 2. Increment navResetKey to force re-mounting with pristine animation triggers
+    setNavResetKey(k => k + 1);
+
+    if (page === 'why-seawise') {
+      setCurrentPage('about');
+      window.location.hash = 'why-seawise';
+      setTimeout(() => {
+        const el = document.getElementById('why-seawise');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 120);
+      return;
+    }
     setCurrentPage(page);
     window.location.hash = page;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const openConsultationModal = (service?: string) => {
@@ -80,7 +113,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#060B18] text-slate-100 antialiased font-sans">
+    <div className="min-h-screen flex flex-col bg-[#060B18] text-slate-100 antialiased font-sans overflow-x-hidden">
       {/* Sticky Header */}
       <Header 
         currentPage={currentPage}
@@ -89,9 +122,10 @@ export default function App() {
       />
 
       {/* Main Page Content */}
-      <main className="flex-grow">
+      <main className="flex-grow overflow-x-hidden">
         {currentPage === 'home' && (
           <HomeView 
+            key={`home-${navResetKey}`}
             onNavigate={navigateTo} 
             onRequestConsultation={openConsultationModal} 
           />
@@ -99,6 +133,7 @@ export default function App() {
 
         {currentPage === 'about' && (
           <AboutView 
+            key={`about-${navResetKey}`}
             onNavigate={navigateTo} 
             onRequestConsultation={() => openConsultationModal()} 
           />
@@ -122,13 +157,6 @@ export default function App() {
           <MarineServicesView 
             onNavigate={navigateTo} 
             onRequestConsultation={openConsultationModal} 
-          />
-        )}
-
-        {currentPage === 'why-seawise' && (
-          <WhySeawiseView 
-            onNavigate={navigateTo} 
-            onRequestConsultation={() => openConsultationModal()} 
           />
         )}
 

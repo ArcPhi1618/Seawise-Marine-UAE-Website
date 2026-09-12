@@ -3,9 +3,11 @@
 @layer base {
   html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    scroll-behavior: smooth;
     color: #0f172a;
     background-color: #060B18;
+  }
+  html, body {
+    overflow-x: hidden;
   }
 }
 
