@@ -6,7 +6,6 @@ import {
   MARITIME_IMAGES, 
   CORE_VALUES, 
   QUALITATIVE_PILLARS, 
-  EDGE_ATTRIBUTES,
   CONTACT_INFO_PLACEHOLDERS 
 } from '../data/maritimeData';
 import { 
