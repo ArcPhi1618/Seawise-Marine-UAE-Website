@@ -160,9 +160,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onRequestConsultatio
 
               <div className="flex items-start gap-2.5">
                 <Mail className="w-4 h-4 text-neutral-400 shrink-0 mt-0.5" />
-                <div>
+                <div className="flex flex-col">
                   <span className="text-white font-medium">Inquiries</span>
-                  <p className="text-xs text-neutral-400">{CONTACT_INFO_PLACEHOLDERS.inquiriesEmail}</p>
+                  <a 
+                    href={`mailto:${CONTACT_INFO_PLACEHOLDERS.inquiriesEmail.replace(' (Placeholder)', '')}`}
+                    className="text-xs text-neutral-400 hover:text-white transition-colors"
+                  >
+                    {CONTACT_INFO_PLACEHOLDERS.inquiriesEmail}
+                  </a>
                 </div>
               </div>
 

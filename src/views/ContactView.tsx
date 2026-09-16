@@ -126,7 +126,12 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                   </span>
                   <div className="flex items-center gap-2 text-neutral-400">
                     <Mail className="w-3.5 h-3.5 text-neutral-400" />
-                    <span>{CONTACT_INFO_PLACEHOLDERS.techEmail}</span>
+                    <a 
+                      href={`mailto:${CONTACT_INFO_PLACEHOLDERS.techEmail.replace(' (Placeholder)', '')}`}
+                      className="hover:text-white transition-colors"
+                    >
+                      {CONTACT_INFO_PLACEHOLDERS.techEmail}
+                    </a>
                   </div>
                 </div>
 
@@ -136,7 +141,12 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                   </span>
                   <div className="flex items-center gap-2 text-neutral-400">
                     <Mail className="w-3.5 h-3.5 text-neutral-400" />
-                    <span>{CONTACT_INFO_PLACEHOLDERS.tradingEmail}</span>
+                    <a 
+                      href={`mailto:${CONTACT_INFO_PLACEHOLDERS.tradingEmail.replace(' (Placeholder)', '')}`}
+                      className="hover:text-white transition-colors"
+                    >
+                      {CONTACT_INFO_PLACEHOLDERS.tradingEmail}
+                    </a>
                   </div>
                 </div>
 
@@ -146,7 +156,12 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                   </span>
                   <div className="flex items-center gap-2 text-neutral-400">
                     <Mail className="w-3.5 h-3.5 text-neutral-400" />
-                    <span>{CONTACT_INFO_PLACEHOLDERS.inquiriesEmail}</span>
+                    <a 
+                      href={`mailto:${CONTACT_INFO_PLACEHOLDERS.inquiriesEmail.replace(' (Placeholder)', '')}`}
+                      className="hover:text-white transition-colors"
+                    >
+                      {CONTACT_INFO_PLACEHOLDERS.inquiriesEmail}
+                    </a>
                   </div>
                   <div className="flex items-center gap-2 text-neutral-400 mt-1.5">
                     <Phone className="w-3.5 h-3.5 text-neutral-400" />
