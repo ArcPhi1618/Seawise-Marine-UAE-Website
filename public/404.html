@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEAWISE MARINE | Experienced at Sea. Professional Ashore.</title>
+    <meta name="description" content="Professional ship management, maritime trading, and marine services built on practical sea-going experience, technical expertise, and operational discipline." />
+    <link rel="icon" type="image/png" href="./img/logo_nav.png" />
+    <script>
+      // Single Page App redirect for GitHub Pages hosting:
+      // Preserves path and hash when refreshed or accessed via direct link
+      var path = window.location.pathname;
+      var hash = window.location.hash;
+      // Strip repo prefix if any and route through index.html
+      var segments = path.split('/').filter(Boolean);
+      var lastSegment = segments[segments.length - 1];
+      if (lastSegment && !lastSegment.includes('.')) {
+        window.location.replace('./#' + lastSegment);
+      } else {
+        window.location.replace('./');
+      }
+    </script>
+  </head>
+  <body style="background-color: #0E1013; color: #E5E7EB; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+    <div style="text-align: center;">
+      <p style="letter-spacing: 0.15em; text-transform: uppercase; font-size: 14px;">Redirecting to SEAWISE MARINE...</p>
+    </div>
+  </body>
+</html>
