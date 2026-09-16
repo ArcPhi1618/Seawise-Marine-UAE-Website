@@ -46,36 +46,36 @@ export const ShipManagementView: React.FC<ShipManagementViewProps> = ({
   onRequestConsultation 
 }) => {
   return (
-    <div className="bg-[#060B18] text-slate-100 min-h-screen pt-24 pb-20">
+    <div className="bg-[#0E1013] text-neutral-100 min-h-screen pt-24 pb-20">
       
       {/* 1. HERO */}
-      <section className="relative py-16 lg:py-24 border-b border-slate-800 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-25">
+      <section className="relative py-16 lg:py-24 border-b border-neutral-800 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-20">
           <img 
             src={MARITIME_IMAGES.dryDocking} 
             alt="Ship dry dock maintenance and technical overhaul" 
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#060B18] via-[#060B18]/90 to-[#060B18]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0E1013] via-[#0E1013]/90 to-[#0E1013]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-900 border border-slate-700 rounded-sm mb-4">
-              <span className="text-[10px] font-tech font-bold uppercase tracking-widest text-slate-300">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-900 border border-neutral-700 mb-4">
+              <span className="text-[10px] font-tech font-bold uppercase tracking-widest text-neutral-300">
                 Core Division 01
               </span>
             </div>
-            <h1 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-6">
+            <h1 className="font-display text-3xl sm:text-5xl font-bold text-white uppercase tracking-wider leading-tight mb-6">
               Ship Management
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-8">
+            <p className="text-base sm:text-lg text-neutral-300 leading-relaxed max-w-2xl font-light mb-8">
               Professional management solutions designed to maintain vessel safety, reliability, compliance, and operational efficiency.
             </p>
 
             <button
               onClick={() => onRequestConsultation('Ship Management')}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-950 text-xs font-bold uppercase tracking-wider rounded-sm hover:bg-slate-100 transition-colors shadow-lg cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-neutral-950 text-xs font-display font-bold uppercase tracking-[0.18em] hover:bg-neutral-200 transition-colors cursor-pointer border border-neutral-300"
             >
               <span>Discuss Your Vessel Requirements</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -88,15 +88,15 @@ export const ShipManagementView: React.FC<ShipManagementViewProps> = ({
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-16">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-6 h-px bg-slate-500"></span>
-            <span className="text-xs font-tech font-bold uppercase tracking-widest text-slate-300">
+            <span className="w-6 h-px bg-neutral-500"></span>
+            <span className="text-xs font-tech font-bold uppercase tracking-widest text-neutral-300">
               Technical Capabilities
             </span>
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white uppercase tracking-wider mb-4">
             Comprehensive Management Scope
           </h2>
-          <p className="text-base text-slate-400">
+          <p className="text-base text-neutral-400">
             Engineered to safeguard physical assets, maintain regulatory class standing, and optimize OPEX.
           </p>
         </div>
@@ -105,40 +105,40 @@ export const ShipManagementView: React.FC<ShipManagementViewProps> = ({
           {SHIP_MANAGEMENT_SERVICES.map((srv, index) => (
             <div 
               key={srv.id}
-              className="bg-[#0A1227] border border-slate-800 rounded-sm p-6 hover:border-slate-600 transition-all flex flex-col justify-between group"
+              className="bg-[#14161A] border border-neutral-800 p-6 hover:border-neutral-500 transition-all flex flex-col justify-between group"
             >
               <div>
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-                  <span className="text-[11px] font-tech text-slate-400 font-bold">
+                <div className="flex items-center justify-between border-b border-neutral-800 pb-3 mb-4">
+                  <span className="text-[11px] font-tech text-neutral-400 font-bold tracking-wider uppercase">
                     SERVICE {String(index + 1).padStart(2, '0')}
                   </span>
-                  <div className="w-8 h-8 rounded-sm bg-slate-900 border border-slate-700 flex items-center justify-center">
+                  <div className="w-8 h-8 bg-neutral-900 border border-neutral-700 flex items-center justify-center">
                     {getServiceIcon(index)}
                   </div>
                 </div>
 
-                <h3 className="font-heading text-lg font-bold text-white mb-2 group-hover:text-slate-200 transition-colors">
+                <h3 className="font-display text-lg font-bold text-white uppercase tracking-wider mb-2 group-hover:text-neutral-200 transition-colors">
                   {srv.title}
                 </h3>
 
-                <p className="text-xs text-slate-400 leading-relaxed mb-5">
+                <p className="text-xs text-neutral-400 leading-relaxed mb-5">
                   {srv.description}
                 </p>
 
                 <div className="space-y-1.5 mb-6">
                   {srv.keyPoints.map((point) => (
-                    <div key={point} className="flex items-center gap-2 text-xs text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <div key={point} className="flex items-center gap-2 text-xs text-neutral-300">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-neutral-400 shrink-0" />
                       <span>{point}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-800/80">
+              <div className="pt-3 border-t border-neutral-800">
                 <button
                   onClick={() => onRequestConsultation(`Ship Management: ${srv.title}`)}
-                  className="text-xs font-tech font-bold text-slate-300 hover:text-white uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
+                  className="text-xs font-tech font-bold text-neutral-300 hover:text-white uppercase tracking-wider flex items-center gap-1.5 cursor-pointer"
                 >
                   <span>Inquire for Vessel</span>
                   <ArrowRight className="w-3 h-3" />
@@ -150,20 +150,20 @@ export const ShipManagementView: React.FC<ShipManagementViewProps> = ({
       </section>
 
       {/* 3. OUR APPROACH (5 STEPS) */}
-      <section className="py-24 bg-[#080F22] border-t border-slate-800">
+      <section className="py-24 bg-[#121418] border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-16">
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-6 h-px bg-slate-500"></span>
-              <span className="text-xs font-tech font-bold uppercase tracking-widest text-slate-300">
+              <span className="w-6 h-px bg-neutral-500"></span>
+              <span className="text-xs font-tech font-bold uppercase tracking-widest text-neutral-300">
                 Methodology
               </span>
             </div>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white uppercase tracking-wider mb-4">
               Our Approach
             </h2>
-            <p className="text-base text-slate-400">
+            <p className="text-base text-neutral-400">
               How Seawise Marine applies technical and operational knowledge throughout the vessel management lifecycle.
             </p>
           </div>
@@ -172,22 +172,22 @@ export const ShipManagementView: React.FC<ShipManagementViewProps> = ({
             {APPROACH_STEPS.map((step) => (
               <div 
                 key={step.step}
-                className="bg-[#0B1530] border border-slate-800 p-6 rounded-sm flex flex-col justify-between hover:border-slate-600 transition-colors"
+                className="bg-[#14161A] border border-neutral-800 p-6 flex flex-col justify-between hover:border-neutral-500 transition-colors"
               >
                 <div>
-                  <span className="font-tech text-xs font-bold text-slate-400 block mb-2">
+                  <span className="font-tech text-xs font-bold text-neutral-400 block mb-2">
                     STEP {step.step}
                   </span>
-                  <h3 className="font-heading text-xl font-bold text-white mb-3">
+                  <h3 className="font-display text-base font-bold text-white uppercase tracking-wider mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                  <p className="text-xs text-neutral-400 leading-relaxed mb-4">
                     {step.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-800 text-[11px] font-tech text-slate-300">
-                  <span className="text-slate-400 block text-[10px]">DELIVERABLE:</span>
+                <div className="pt-3 border-t border-neutral-800 text-[11px] font-tech text-neutral-300">
+                  <span className="text-neutral-400 block text-[10px]">DELIVERABLE:</span>
                   {step.deliverable}
                 </div>
               </div>
@@ -198,19 +198,19 @@ export const ShipManagementView: React.FC<ShipManagementViewProps> = ({
       </section>
 
       {/* 4. CTA BANNER */}
-      <section className="py-16 bg-[#040814] border-t border-slate-800">
+      <section className="py-16 bg-[#0B0C0E] border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="font-heading text-2xl font-bold text-white">
+            <h3 className="font-display text-2xl font-bold uppercase tracking-wider text-white">
               Ready to Discuss Your Vessel Requirements?
             </h3>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
+            <p className="text-xs sm:text-sm text-neutral-400 mt-1">
               Our technical superintendents are available to evaluate your vessel’s scope of work.
             </p>
           </div>
           <button
             onClick={() => onRequestConsultation('Ship Management')}
-            className="px-6 py-3 bg-white hover:bg-slate-100 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-sm transition-all cursor-pointer whitespace-nowrap"
+            className="px-6 py-3.5 bg-white hover:bg-neutral-200 text-neutral-950 text-xs font-display font-bold uppercase tracking-[0.18em] transition-all cursor-pointer whitespace-nowrap border border-neutral-300"
           >
             Discuss Your Vessel Requirements
           </button>

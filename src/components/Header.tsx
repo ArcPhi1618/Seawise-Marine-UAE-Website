@@ -58,58 +58,49 @@ export const Header: React.FC<HeaderProps> = ({
       id="main-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#060B18]/95 backdrop-blur-md py-2.5 sm:py-3 border-b border-slate-800/80 shadow-xl shadow-black/40' 
-          : 'bg-gradient-to-b from-[#060B18]/95 via-[#060B18]/85 to-transparent py-3.5 sm:py-4 border-b border-white/5'
+          ? 'bg-[#0E1013]/98 backdrop-blur-md py-2.5 sm:py-3 border-b border-neutral-800 shadow-2xl shadow-black/60' 
+          : 'bg-[#0E1013]/95 backdrop-blur-sm py-3.5 sm:py-4 border-b border-neutral-800/60'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo */}
+          
+          {/* Brand Logo with Framed Box Emblem (matching the reference style) */}
           <button 
             id="brand-logo-btn"
             onClick={() => handleLinkClick('home')} 
-            className="flex items-center gap-3 sm:gap-4 group text-left cursor-pointer focus:outline-none"
+            className="flex items-center gap-3 group text-left cursor-pointer focus:outline-none"
           >
-            <div className="relative shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 group-hover:scale-105 transition-transform duration-200">
+
+            {/* Logo */}
+            <div className="flex items-center justify-center shrink-0">
               <img 
-                src="/img/logo.png" 
-                alt="SEAWISE MARINE Logo" 
-                className="w-full h-full object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
-                onError={(e) => {
-                  if (!e.currentTarget.src.endsWith('logo.jpg')) {
-                    e.currentTarget.src = '/img/logo.jpg';
-                    return;
-                  }
-                  e.currentTarget.style.display = 'none';
-                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                  if (fallback) fallback.style.display = 'flex';
-                }}
+                src="img/Seawise Marine UAE Logo.png" 
+                alt="Seawise Marine UAE Logo" 
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
               />
-              <div style={{ display: 'none' }} className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 items-center justify-center">
-                <Anchor className="w-6 h-6 text-slate-200" strokeWidth={2.2} />
-              </div>
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-heading font-bold text-lg sm:text-xl tracking-wider text-white">
-                  {BRAND_INFO.name}
-                </span>
+
+            {/* Signature Framed Emblem Box */}
+            <div className="border border-neutral-300/70 group-hover:border-white px-3.5 sm:px-5 py-1.5 sm:py-2 bg-[#14161A] transition-all shadow-md">
+              <div className="font-display font-bold text-base sm:text-xl tracking-[0.22em] text-white uppercase leading-tight">
+                SEAWISE
               </div>
-              <p className="text-[10px] sm:text-[11px] tracking-wider text-slate-400 uppercase font-medium">
-                {BRAND_INFO.subtitle}
-              </p>
+              <div className="text-[8px] sm:text-[9.5px] font-sans font-medium tracking-[0.24em] text-neutral-300 uppercase leading-none mt-0.5">
+                MARINE SERVICES
+              </div>
             </div>
           </button>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation with Wide-Tracked Uppercase Typography */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             <button
               id="nav-home"
               onClick={() => handleLinkClick('home')}
-              className={`px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm cursor-pointer ${
+              className={`px-3.5 py-1.5 text-[11px] xl:text-xs font-display font-bold tracking-[0.2em] uppercase transition-all cursor-pointer ${
                 currentPage === 'home'
-                  ? 'text-white bg-slate-800/60 border border-slate-700/60'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/30'
+                  ? 'text-white border border-neutral-400/80 bg-neutral-800/50'
+                  : 'text-neutral-300 hover:text-white hover:border-neutral-700/60 border border-transparent'
               }`}
             >
               Home
@@ -118,10 +109,10 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="nav-about"
               onClick={() => handleLinkClick('about')}
-              className={`px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm cursor-pointer ${
+              className={`px-3.5 py-1.5 text-[11px] xl:text-xs font-display font-bold tracking-[0.2em] uppercase transition-all cursor-pointer ${
                 currentPage === 'about'
-                  ? 'text-white bg-slate-800/60 border border-slate-700/60'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/30'
+                  ? 'text-white border border-neutral-400/80 bg-neutral-800/50'
+                  : 'text-neutral-300 hover:text-white hover:border-neutral-700/60 border border-transparent'
               }`}
             >
               About
@@ -135,30 +126,30 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <button
                 id="nav-services-menu"
-                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 text-[11px] xl:text-xs font-display font-bold tracking-[0.2em] uppercase transition-all cursor-pointer ${
                   isServicesActive
-                    ? 'text-white bg-slate-800/60 border border-slate-700/60'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/30'
+                    ? 'text-white border border-neutral-400/80 bg-neutral-800/50'
+                    : 'text-neutral-300 hover:text-white hover:border-neutral-700/60 border border-transparent'
                 }`}
               >
                 <span>Services</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesDropdownOpen ? 'rotate-180 text-blue-400' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesDropdownOpen ? 'rotate-180 text-neutral-300' : 'text-neutral-400'}`} />
               </button>
 
               {servicesDropdownOpen && (
                 <div className="absolute top-full left-0 w-72 pt-2 z-50">
-                  <div className="bg-[#0B132B] border border-slate-700/80 rounded-md shadow-2xl p-2 backdrop-blur-xl">
+                  <div className="bg-[#121418] border border-neutral-700 rounded-none shadow-2xl p-2 backdrop-blur-xl">
                     <button
                       id="dropdown-ship-management"
                       onClick={() => handleLinkClick('ship-management')}
-                      className={`w-full flex items-start gap-3 p-2.5 rounded-sm text-left transition-colors cursor-pointer ${
-                        currentPage === 'ship-management' ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
+                      className={`w-full flex items-start gap-3 p-2.5 text-left transition-colors cursor-pointer border border-transparent ${
+                        currentPage === 'ship-management' ? 'bg-neutral-800 text-white border-neutral-600' : 'text-neutral-300 hover:bg-neutral-800/70 hover:text-white'
                       }`}
                     >
-                      <Ship className="w-4 h-4 mt-0.5 text-blue-400 shrink-0" />
+                      <Ship className="w-4 h-4 mt-0.5 text-neutral-200 shrink-0" />
                       <div>
-                        <div className="text-xs font-bold tracking-wide">Ship Management</div>
-                        <div className="text-[11px] text-slate-400 leading-tight mt-0.5">
+                        <div className="text-xs font-bold tracking-wider uppercase font-display">Ship Management</div>
+                        <div className="text-[11px] text-neutral-400 leading-tight mt-0.5">
                           Technical, safety, crew & maintenance solutions
                         </div>
                       </div>
@@ -167,14 +158,14 @@ export const Header: React.FC<HeaderProps> = ({
                     <button
                       id="dropdown-maritime-trading"
                       onClick={() => handleLinkClick('maritime-trading')}
-                      className={`w-full flex items-start gap-3 p-2.5 rounded-sm text-left transition-colors cursor-pointer ${
-                        currentPage === 'maritime-trading' ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
+                      className={`w-full flex items-start gap-3 p-2.5 text-left transition-colors cursor-pointer border border-transparent ${
+                        currentPage === 'maritime-trading' ? 'bg-neutral-800 text-white border-neutral-600' : 'text-neutral-300 hover:bg-neutral-800/70 hover:text-white'
                       }`}
                     >
-                      <PackageCheck className="w-4 h-4 mt-0.5 text-blue-400 shrink-0" />
+                      <PackageCheck className="w-4 h-4 mt-0.5 text-neutral-200 shrink-0" />
                       <div>
-                        <div className="text-xs font-bold tracking-wide">Maritime Trading</div>
-                        <div className="text-[11px] text-slate-400 leading-tight mt-0.5">
+                        <div className="text-xs font-bold tracking-wider uppercase font-display">Maritime Trading</div>
+                        <div className="text-[11px] text-neutral-400 leading-tight mt-0.5">
                           Marine equipment, machinery components & spares
                         </div>
                       </div>
@@ -183,14 +174,14 @@ export const Header: React.FC<HeaderProps> = ({
                     <button
                       id="dropdown-marine-services"
                       onClick={() => handleLinkClick('marine-services')}
-                      className={`w-full flex items-start gap-3 p-2.5 rounded-sm text-left transition-colors cursor-pointer ${
-                        currentPage === 'marine-services' ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
+                      className={`w-full flex items-start gap-3 p-2.5 text-left transition-colors cursor-pointer border border-transparent ${
+                        currentPage === 'marine-services' ? 'bg-neutral-800 text-white border-neutral-600' : 'text-neutral-300 hover:bg-neutral-800/70 hover:text-white'
                       }`}
                     >
-                      <Wrench className="w-4 h-4 mt-0.5 text-blue-400 shrink-0" />
+                      <Wrench className="w-4 h-4 mt-0.5 text-neutral-200 shrink-0" />
                       <div>
-                        <div className="text-xs font-bold tracking-wide">Marine Services</div>
-                        <div className="text-[11px] text-slate-400 leading-tight mt-0.5">
+                        <div className="text-xs font-bold tracking-wider uppercase font-display">Marine Services</div>
+                        <div className="text-[11px] text-neutral-400 leading-tight mt-0.5">
                           Consultancy, surveys, condition audits & port support
                         </div>
                       </div>
@@ -200,126 +191,137 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </div>
 
-            {/* Direct links removed in favor of Services dropdown */}
-
             <button
               id="nav-contact"
               onClick={() => handleLinkClick('contact')}
-              className={`px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors rounded-sm cursor-pointer ${
+              className={`px-3.5 py-1.5 text-[11px] xl:text-xs font-display font-bold tracking-[0.2em] uppercase transition-all cursor-pointer ${
                 currentPage === 'contact'
-                  ? 'text-white bg-slate-800/60 border border-slate-700/60'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-800/30'
+                  ? 'text-white border border-neutral-400/80 bg-neutral-800/50'
+                  : 'text-neutral-300 hover:text-white hover:border-neutral-700/60 border border-transparent'
               }`}
             >
               Contact
             </button>
           </nav>
 
-          {/* Header Action Button */}
+          {/* Header Action Button (Clean Framed Button) */}
           <div className="hidden lg:flex items-center gap-3">
             <button
               id="header-cta-btn"
               onClick={onRequestConsultation}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-white text-slate-900 text-xs font-bold uppercase tracking-wider rounded-sm transition-all shadow-md hover:shadow-lg hover:shadow-slate-200/10 cursor-pointer border border-slate-200"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-100 hover:bg-white text-neutral-950 text-xs font-display font-bold uppercase tracking-[0.18em] rounded-none transition-all shadow-md hover:shadow-lg cursor-pointer border border-neutral-300"
             >
-              <span>Request a Consultation</span>
+              <span>Consultation</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          {/* Mobile Hamburger Toggle */}
+          {/* Mobile Hamburger Toggle (Clean 3-line minimalist icon like reference) */}
           <div className="flex items-center gap-2 lg:hidden">
             <button
               id="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-300 hover:text-white focus:outline-none"
+              className="p-2 text-white hover:text-neutral-300 focus:outline-none cursor-pointer"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" strokeWidth={2} />
+              ) : (
+                <Menu className="w-6 h-6" strokeWidth={2} />
+              )}
             </button>
           </div>
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (Styled with the 2x2 wide-tracked bold uppercase layout like reference) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#070D1E] border-b border-slate-800 px-4 pt-3 pb-6 space-y-2 mt-2 shadow-2xl">
-          <div className="py-2 border-b border-slate-800/80 mb-2">
-            <p className="text-[11px] font-tech text-slate-400 uppercase tracking-widest">
-              Navigation Menu
-            </p>
+        <div className="lg:hidden bg-[#0E1013] border-b border-neutral-800 px-6 pt-4 pb-8 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
+          
+          {/* Reference-style 2-column bold navigation grid */}
+          <div className="grid grid-cols-2 gap-y-3 gap-x-4 py-4 border-b border-neutral-800 text-center">
+            <button
+              onClick={() => handleLinkClick('home')}
+              className={`py-3 font-display font-bold text-sm tracking-[0.25em] uppercase border transition-colors ${
+                currentPage === 'home' 
+                  ? 'border-neutral-400 bg-neutral-800 text-white' 
+                  : 'border-neutral-800/80 text-white hover:border-neutral-600'
+              }`}
+            >
+              HOME
+            </button>
+
+            <button
+              onClick={() => handleLinkClick('about')}
+              className={`py-3 font-display font-bold text-sm tracking-[0.25em] uppercase border transition-colors ${
+                currentPage === 'about' 
+                  ? 'border-neutral-400 bg-neutral-800 text-white' 
+                  : 'border-neutral-800/80 text-white hover:border-neutral-600'
+              }`}
+            >
+              ABOUT
+            </button>
+
+            <button
+              onClick={() => handleLinkClick('ship-management')}
+              className={`py-3 font-display font-bold text-sm tracking-[0.25em] uppercase border transition-colors ${
+                isServicesActive 
+                  ? 'border-neutral-400 bg-neutral-800 text-white' 
+                  : 'border-neutral-800/80 text-white hover:border-neutral-600'
+              }`}
+            >
+              SERVICES
+            </button>
+
+            <button
+              onClick={() => handleLinkClick('contact')}
+              className={`py-3 font-display font-bold text-sm tracking-[0.25em] uppercase border transition-colors ${
+                currentPage === 'contact' 
+                  ? 'border-neutral-400 bg-neutral-800 text-white' 
+                  : 'border-neutral-800/80 text-white hover:border-neutral-600'
+              }`}
+            >
+              CONTACT
+            </button>
           </div>
 
-          <button
-            onClick={() => handleLinkClick('home')}
-            className={`w-full text-left px-3 py-2 text-sm font-semibold tracking-wide rounded-sm ${
-              currentPage === 'home' ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800/40'
-            }`}
-          >
-            Home
-          </button>
-
-          <button
-            onClick={() => handleLinkClick('about')}
-            className={`w-full text-left px-3 py-2 text-sm font-semibold tracking-wide rounded-sm ${
-              currentPage === 'about' ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800/40'
-            }`}
-          >
-            About Us
-          </button>
-
-          <div className="pt-1 pb-1">
-            <p className="px-3 py-1 text-[10px] font-tech font-bold uppercase tracking-widest text-slate-400">
-              Core Divisions
+          {/* Core Divisions Sub-list */}
+          <div className="pt-4 pb-2 space-y-1 text-left">
+            <p className="text-[10px] font-tech font-bold uppercase tracking-widest text-neutral-400 mb-2">
+              Divisions
             </p>
             <button
               onClick={() => handleLinkClick('ship-management')}
-              className={`w-full text-left pl-6 pr-3 py-2 text-sm font-medium rounded-sm ${
-                currentPage === 'ship-management' ? 'bg-slate-800 text-white font-semibold' : 'text-slate-300 hover:bg-slate-800/40'
-              }`}
+              className="w-full text-left px-3 py-2 text-xs font-display font-semibold tracking-wider text-neutral-300 hover:text-white hover:bg-neutral-800/60 uppercase"
             >
-              Ship Management
+              • Ship Management
             </button>
             <button
               onClick={() => handleLinkClick('maritime-trading')}
-              className={`w-full text-left pl-6 pr-3 py-2 text-sm font-medium rounded-sm ${
-                currentPage === 'maritime-trading' ? 'bg-slate-800 text-white font-semibold' : 'text-slate-300 hover:bg-slate-800/40'
-              }`}
+              className="w-full text-left px-3 py-2 text-xs font-display font-semibold tracking-wider text-neutral-300 hover:text-white hover:bg-neutral-800/60 uppercase"
             >
-              Maritime Trading
+              • Maritime Trading
             </button>
             <button
               onClick={() => handleLinkClick('marine-services')}
-              className={`w-full text-left pl-6 pr-3 py-2 text-sm font-medium rounded-sm ${
-                currentPage === 'marine-services' ? 'bg-slate-800 text-white font-semibold' : 'text-slate-300 hover:bg-slate-800/40'
-              }`}
+              className="w-full text-left px-3 py-2 text-xs font-display font-semibold tracking-wider text-neutral-300 hover:text-white hover:bg-neutral-800/60 uppercase"
             >
-              Marine Services
+              • Marine Services
             </button>
           </div>
 
-          <button
-            onClick={() => handleLinkClick('contact')}
-            className={`w-full text-left px-3 py-2 text-sm font-semibold tracking-wide rounded-sm ${
-              currentPage === 'contact' ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800/40'
-            }`}
-          >
-            Contact
-          </button>
-
-          
-          
+          {/* Consultation CTA button */}
+          <div className="pt-4">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onRequestConsultation();
+              }}
+              className="w-full py-3 bg-white text-neutral-950 font-display font-bold text-xs uppercase tracking-[0.2em] border border-neutral-300"
+            >
+              Request a Consultation
+            </button>
+          </div>
         </div>
       )}
     </header>

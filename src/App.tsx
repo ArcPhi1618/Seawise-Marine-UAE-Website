@@ -113,7 +113,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#060B18] text-slate-100 antialiased font-sans overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#0E1013] text-neutral-100 antialiased font-sans overflow-x-hidden">
       {/* Sticky Header */}
       <Header 
         currentPage={currentPage}
@@ -141,6 +141,7 @@ export default function App() {
 
         {currentPage === 'ship-management' && (
           <ShipManagementView 
+            key={`ship-${navResetKey}`}
             onNavigate={navigateTo} 
             onRequestConsultation={openConsultationModal} 
           />
@@ -148,6 +149,7 @@ export default function App() {
 
         {currentPage === 'maritime-trading' && (
           <MaritimeTradingView 
+            key={`trading-${navResetKey}`}
             onNavigate={navigateTo} 
             onRequestConsultation={openConsultationModal} 
           />
@@ -155,6 +157,7 @@ export default function App() {
 
         {currentPage === 'marine-services' && (
           <MarineServicesView 
+            key={`services-${navResetKey}`}
             onNavigate={navigateTo} 
             onRequestConsultation={openConsultationModal} 
           />
@@ -162,6 +165,7 @@ export default function App() {
 
         {currentPage === 'contact' && (
           <ContactView 
+            key={`contact-${navResetKey}`}
             onNavigate={navigateTo} 
           />
         )}
@@ -185,7 +189,7 @@ export default function App() {
         <button
           id="back-to-top-btn"
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 p-3 bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white rounded-sm border border-slate-700 shadow-xl backdrop-blur-md transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="fixed bottom-6 right-6 z-40 p-3 bg-[#14161A]/95 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-neutral-700 shadow-2xl backdrop-blur-md transition-all cursor-pointer focus:outline-none focus:ring-1 focus:ring-neutral-400"
           aria-label="Scroll to top of page"
         >
           <ArrowUp className="w-4 h-4" />
