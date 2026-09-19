@@ -154,7 +154,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ onNavigate }) => {
                 <p className="text-neutral-300">{CONTACT_INFO_PLACEHOLDERS.workingHours}</p>
                 <p>24/7 Operations Emergency Standby</p>
                 <p className="text-xs text-neutral-500 pt-2 font-light">
-                  All vessel data and technical inquiries remain strictly confidential under standard maritime conventions.
+                  All vessel data and technical inquiries remain strictly confidential under standard maritime conventions. (placeholder)
                 </p>
               </div>
             </div>
