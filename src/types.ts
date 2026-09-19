@@ -42,6 +42,8 @@ export interface QualitativePillar {
 
 export interface InquiryFormData {
   fullName: string;
+  firstName?: string;
+  lastName?: string;
   company: string;
   email: string;
   phone: string;

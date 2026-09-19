@@ -329,11 +329,11 @@ export const QUALITATIVE_PILLARS: QualitativePillar[] = [
 
 export const CONTACT_INFO_PLACEHOLDERS = {
   jurisdiction: 'United Arab Emirates',
-  hub: 'Dubai Maritime City / UAE Maritime Hub (Placeholder)',
-  inquiriesEmail: 'info@seawisemarineuae.com (Placeholder)',
-  techEmail: 'technical@seawisemarineuae.com (Placeholder)',
-  tradingEmail: 'trading@seawisemarineuae.com (Placeholder)',
-  phone: '+971 4 000 0000 (Placeholder)',
-  workingHours: 'Sunday – Thursday: 08:00 – 17:00 GST / 24/7 Operations Duty',
+  hub: 'UAE (Placeholder)',
+  inquiriesEmail: 'info@seawisemarineuae.com',
+  techEmail: 'gil@seawisemarineuae.com',
+  tradingEmail: 'tripon@seawisemarineuae.com',
+  phone: '+971553309271',
+  workingHours: 'Monday – Saturday: 09:00 – 17:00 GST',
   coordinates: "25° 15' 44\" N, 55° 17' 32\" E",
 };
